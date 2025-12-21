@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    typedRoutes: true
-  }
+  // typedRoutes disabled for compatibility
+  // experimental: {
+  //   typedRoutes: true
+  // }
 };
 
 export default nextConfig;

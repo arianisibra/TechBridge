@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 
-type ButtonProps = ComponentPropsWithoutRef<"a"> & {
+type ButtonProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
   variant?: "primary" | "secondary" | "ghost";
   href: string;
 };
