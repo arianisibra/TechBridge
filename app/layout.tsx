@@ -7,34 +7,34 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { ChatWidget } from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
-  title: "Lumafin Business – AI Invoice Automation for Modern Teams",
+  title: "TechBridge – Digitalisierung, Produktentwicklung & KI-Automatisierung",
   description:
-    "Automate invoice processing with AI. OCR extraction, approval workflows, validation rules, and seamless ERP sync. Reduce processing time by 80%.",
-  keywords: ["invoice automation", "AI invoice processing", "OCR extraction", "AP automation", "approval workflows", "accounts payable", "invoice management", "B2B fintech"],
-  authors: [{ name: "Lumafin Business" }],
-  creator: "Lumafin Business",
-  publisher: "Lumafin Business",
-  metadataBase: new URL("https://lumafin.ch"),
+    "Wir modernisieren Ihre digitale Präsenz, entwickeln Web- und Mobile-Produkte, automatisieren Workflows mit KI und helfen Ihnen zu wachsen. Schweizer Ansprechpartner, zuverlässige Lieferung.",
+  keywords: ["Digitalisierung", "Webentwicklung", "Mobile App", "KI-Automatisierung", "Schweiz", "Produktentwicklung", "SEO", "Workflow-Automatisierung", "React Native", "Next.js"],
+  authors: [{ name: "TechBridge" }],
+  creator: "TechBridge",
+  publisher: "TechBridge",
+  metadataBase: new URL("https://techbridge.ch"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Lumafin Business – AI Invoice Automation",
+    title: "TechBridge – Digitalisierung & Produktentwicklung",
     description:
-      "Automate invoice intake, extraction, validation, approvals, and ERP sync. Built for finance teams.",
-    url: "https://lumafin.ch",
-    siteName: "Lumafin Business",
+      "Strategie + Entwicklung + Automatisierung + Wachstum. Ihr Schweizer Digitalisierungspartner.",
+    url: "https://techbridge.ch",
+    siteName: "TechBridge",
     type: "website",
-    locale: "en_US",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Lumafin Business Invoice Dashboard" }]
+    locale: "de_CH",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "TechBridge – Schweizer Digitalisierungspartner" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumafin Business – AI Invoice Automation",
+    title: "TechBridge – Digitalisierung & Produktentwicklung",
     description:
-      "Automate invoice intake, extraction, validation, approvals, and ERP sync. Built for finance teams.",
+      "Strategie + Entwicklung + Automatisierung + Wachstum. Ihr Schweizer Digitalisierungspartner.",
     images: ["/og.png"],
-    creator: "@lumafin",
+    creator: "@techbridge_ch",
   },
   robots: {
     index: true,
@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="de" className="scroll-smooth">
       <head>
         <StructuredData />
       </head>

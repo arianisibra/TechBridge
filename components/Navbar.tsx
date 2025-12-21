@@ -7,11 +7,10 @@ import { motion } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Product", href: "/product" },
-  { label: "How it works", href: "/how-it-works" },
-  { label: "Integrations", href: "/integrations" },
-  { label: "Security", href: "/security" },
-  { label: "Pricing", href: "/pricing" }
+  { label: "Leistungen", href: "/services" },
+  { label: "Projekte", href: "/work" },
+  { label: "Über uns", href: "/about" },
+  { label: "Kontakt", href: "/contact" }
 ];
 
 export function Navbar() {
@@ -28,12 +27,12 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold group">
           <motion.span
             whileHover={{ scale: 1.1, rotate: 10 }}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white shadow-lg"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white shadow-lg text-sm font-bold"
           >
-            ◉
+            TB
           </motion.span>
           <span className="transition-colors group-hover:text-slate-700">
-            Lumafin <span className="text-slate-400 font-normal">Business</span>
+            TechBridge
           </span>
         </Link>
 
@@ -67,21 +66,11 @@ export function Navbar() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hidden sm:block"
-          >
-            <Button variant="ghost" href="#login">
-              Log in
-            </Button>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button href="/book-demo">Book demo</Button>
+            <Button href="/contact">Gespräch buchen</Button>
           </motion.div>
           
           {/* Mobile menu button */}
@@ -114,11 +103,11 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="/book-demo"
+            href="/contact"
             onClick={() => setMobileOpen(false)}
             className="mt-2 rounded-lg bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white"
           >
-            Book demo
+            Gespräch buchen
           </Link>
         </nav>
       </motion.div>

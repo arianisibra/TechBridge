@@ -4,38 +4,63 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Lumafin Business",
-    description: "AI-powered invoice automation for modern finance teams",
-    url: "https://lumafin.ch",
-    logo: "https://lumafin.ch/logo.png",
+    name: "TechBridge",
+    description: "Digitalisierung, Produktentwicklung & KI-Automatisierung für Schweizer Unternehmen",
+    url: "https://techbridge.ch",
+    logo: "https://techbridge.ch/logo.png",
     sameAs: [
-      "https://linkedin.com/company/lumafin",
-      "https://twitter.com/lumafin"
+      "https://linkedin.com/company/techbridge-ch"
     ],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Zurich",
+      addressLocality: "Schweiz",
       addressCountry: "CH"
     }
   };
 
-  const softwareSchema = {
+  const serviceSchema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Lumafin Business",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
-    description: "AI invoice automation platform with OCR extraction, approval workflows, and ERP integration",
-    offers: {
-      "@type": "Offer",
-      price: "199",
-      priceCurrency: "CHF",
-      priceValidUntil: "2025-12-31"
+    "@type": "ProfessionalService",
+    name: "TechBridge",
+    description: "Schweizer Digitalisierungspartner für Webentwicklung, Mobile Apps, KI-Automatisierung und Wachstumsstrategien",
+    url: "https://techbridge.ch",
+    areaServed: {
+      "@type": "Country",
+      name: "Schweiz"
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      ratingCount: "127"
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Digitale Dienstleistungen",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Web- & Produktentwicklung"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Mobile Entwicklung"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "KI & Automatisierung"
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "SEO & Digitales Marketing"
+          }
+        }
+      ]
     }
   };
 
@@ -45,26 +70,26 @@ export function StructuredData() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "How does the AI extraction work?",
+        name: "An welchen Projekten arbeiten Sie?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Our AI uses advanced OCR and machine learning to read invoices in any format—PDF, scanned images, or photos. It extracts vendor name, invoice number, amounts, VAT, line items, due dates, and payment details with 99.5% accuracy."
+          text: "Wir arbeiten an Websites, Web-Apps, Mobile Apps (React Native), KI-Automatisierung, Workflow-Integration und SEO/Wachstumsprojekten. Unser Fokus liegt auf Schweizer KMUs, die einen zuverlässigen Partner für digitale Projekte brauchen."
         }
       },
       {
         "@type": "Question",
-        name: "What accounting systems do you integrate with?",
+        name: "Wie gehen Sie KI-Projekte an?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We integrate with Bexio, Abacus, SAP, QuickBooks, Xero, and many more. We also offer a REST API and webhooks for custom integrations."
+          text: "Wir setzen KI praktisch ein – Dokument-OCR, KI-Assistenten, Workflow-Automatisierung. Jedes KI-Feature muss nachweislich Zeit sparen oder Umsatz steigern."
         }
       },
       {
         "@type": "Question",
-        name: "Is my data secure?",
+        name: "Bieten Sie laufenden Support nach dem Launch?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. We use 256-bit AES encryption for all data at rest and in transit. Data is hosted in ISO 27001 certified data centers in Switzerland. We're GDPR compliant and SOC 2 Type II certified."
+          text: "Ja. Wir bieten Wartungspakete für Hosting, Updates und Verbesserungen. Viele Kunden arbeiten kontinuierlich mit uns an Iterationen und neuen Features."
         }
       }
     ]
@@ -78,7 +103,7 @@ export function StructuredData() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <script
         type="application/ld+json"

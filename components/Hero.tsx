@@ -2,8 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { motion } from "framer-motion";
-import { FileText, CheckCircle, Zap, ArrowRight, Shield, Clock, Building2 } from "lucide-react";
-import { InvoiceDashboardMock } from "./InvoiceDashboardMock";
+import { ArrowRight, Briefcase, Globe, Cpu, TrendingUp, MapPin } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -19,15 +18,15 @@ const itemVariants = {
 };
 
 const trustBadges = [
-  { icon: Shield, label: "GDPR-ready" },
-  { icon: Building2, label: "Swiss/EU hosting" },
-  { icon: Shield, label: "256-bit encryption" },
-  { icon: CheckCircle, label: "SOC 2 compliant" }
+  { icon: MapPin, label: "Schweizer Basis" },
+  { icon: Briefcase, label: "B2B-Fokus" },
+  { icon: Globe, label: "End-to-End Delivery" },
+  { icon: Cpu, label: "Praktische KI" }
 ];
 
 export function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-white pt-8 pb-0 sm:pt-12 md:pt-16">
+    <section id="hero" className="relative overflow-hidden bg-white pt-8 pb-16 sm:pt-12 md:pt-16">
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50/50" aria-hidden />
       
@@ -62,14 +61,14 @@ export function Hero() {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="h-2 w-2 rounded-full bg-emerald-500"
               />
-              Trusted by 200+ finance teams
+              Ihr Schweizer Digitalisierungspartner
             </motion.div>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
           >
             <motion.span
               initial={{ opacity: 0, y: 20 }}
@@ -77,16 +76,25 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-slate-900"
             >
-              AI invoice automation
+              Digitalisierung, Produktentwicklung
             </motion.span>
             <br />
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-slate-900"
+            >
+              & KI-Automatisierung
+            </motion.span>
+            <br />
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
               className="text-slate-400"
             >
-              for modern businesses
+              für messbare Geschäftsergebnisse
             </motion.span>
           </motion.h1>
 
@@ -95,31 +103,30 @@ export function Hero() {
             variants={itemVariants}
             className="mx-auto max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            Capture invoices from any source. AI extracts, validates, and routes for approval.{" "}
-            <motion.span
-              whileHover={{ scale: 1.08, y: -2 }}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <FileText className="h-3.5 w-3.5" />
-              OCR extraction
-            </motion.span>
-            {" "}+{" "}
-            <motion.span
-              whileHover={{ scale: 1.08, y: -2 }}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <CheckCircle className="h-3.5 w-3.5" />
-              Approvals
-            </motion.span>
-            {" "}+{" "}
-            <motion.span
-              whileHover={{ scale: 1.08, y: -2 }}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 shadow-sm transition-shadow hover:shadow-md"
-            >
-              <Zap className="h-3.5 w-3.5" />
-              ERP sync
-            </motion.span>
+            Wir modernisieren Ihre digitale Präsenz, entwickeln Web- und Mobile-Produkte, automatisieren Workflows mit KI und helfen Ihnen zu wachsen – mit einem Schweizer Ansprechpartner und einem Delivery-Team, das liefert.
           </motion.p>
+
+          {/* Service Pills */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-wrap items-center justify-center gap-3"
+          >
+            {[
+              { icon: Globe, label: "Web & Apps" },
+              { icon: Cpu, label: "KI-Automatisierung" },
+              { icon: Briefcase, label: "Digitalisierung" },
+              { icon: TrendingUp, label: "Wachstum & SEO" }
+            ].map((service) => (
+              <motion.span
+                key={service.label}
+                whileHover={{ scale: 1.08, y: -2 }}
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <service.icon className="h-3.5 w-3.5" />
+                {service.label}
+              </motion.span>
+            ))}
+          </motion.div>
 
           {/* CTAs */}
           <motion.div
@@ -131,8 +138,8 @@ export function Hero() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <Button href="/book-demo">
-                Book a demo
+              <Button href="/contact">
+                Kurzes Gespräch buchen
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
@@ -141,9 +148,8 @@ export function Hero() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <Button variant="secondary" href="#how-it-works">
-                <Clock className="mr-2 h-4 w-4" />
-                See how it works
+              <Button variant="secondary" href="#use-cases">
+                Anwendungsfälle ansehen
               </Button>
             </motion.div>
           </motion.div>
@@ -167,16 +173,6 @@ export function Hero() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Invoice Dashboard Mock */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="relative mt-16 sm:mt-20"
-        >
-          <InvoiceDashboardMock />
         </motion.div>
       </div>
     </section>
