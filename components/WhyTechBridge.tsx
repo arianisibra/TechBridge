@@ -13,83 +13,88 @@ import {
 const reasons = [
   {
     icon: MapPin,
-    title: "Schweizer Ansprechpartner",
-    description: "Sie arbeiten mit einem Schweizer Lead, der Ihren Markt versteht und für Verantwortlichkeit sorgt."
+    title: "Schweizer Partner",
+    description: "Lokaler Ansprechpartner, der Ihren Markt versteht."
   },
   {
     icon: Layers,
-    title: "End-to-End Delivery",
-    description: "Von der Website über Automatisierung bis zum Produkt – wir übernehmen alles. Kein Jonglieren mit mehreren Anbietern."
+    title: "End-to-End",
+    description: "Von der Website bis zur Automatisierung – alles aus einer Hand."
   },
   {
     icon: RefreshCw,
-    title: "Schnelle Iterationen, saubere Übergabe",
-    description: "Wöchentliche Updates, dokumentierter Code und ordentlicher Wissenstransfer. Keine Black Boxes."
+    title: "Schnelle Iterationen",
+    description: "Wöchentliche Updates, saubere Übergabe."
   },
   {
     icon: Cpu,
-    title: "Nur praktische KI",
-    description: "Wir setzen KI ein, wo sie Zeit spart oder Umsatz steigert. Kein Hype, keine Komplexität um ihrer selbst willen."
+    title: "Praktische KI",
+    description: "KI, die wirklich Zeit spart und Umsatz steigert."
   },
   {
     icon: HeartHandshake,
     title: "Langfristiger Support",
-    description: "Wir verschwinden nicht nach dem Launch. Laufende Wartung und Optimierung sind verfügbar."
+    description: "Wir bleiben auch nach dem Launch für Sie da."
   },
   {
     icon: Shield,
-    title: "Zuverlässige Lieferung",
-    description: "Klarer Scope, transparente Preise und eine Erfolgsbilanz bei pünktlicher Lieferung."
+    title: "Zuverlässig",
+    description: "Klarer Scope, transparente Preise, pünktliche Lieferung."
   }
 ];
 
 export function WhyTechBridge() {
   return (
-    <section id="why-techbridge" className="relative overflow-hidden bg-white py-20 sm:py-24">
-      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
+    <section id="why-techbridge" className="relative overflow-hidden bg-white py-28 sm:py-32 md:py-40">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto max-w-3xl text-center mb-20 sm:mb-24"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-600 shadow-sm mb-8"
           >
             <Shield className="h-4 w-4 text-slate-500" />
             Warum TechBridge
           </motion.span>
-          <h2 className="mt-6 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl mb-8">
             Ein Partner, auf den Sie sich verlassen können
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            Wir sind nicht die billigste Option und machen keine übertriebenen Versprechen. Was wir bieten: Klarheit, Zuverlässigkeit und Resultate.
+          <p className="text-lg text-slate-600 sm:text-xl leading-relaxed">
+            Klarheit, Zuverlässigkeit und messbare Ergebnisse.
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, idx) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -4, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="group cursor-pointer rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all hover:shadow-lg hover:bg-white"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.7, 
+                delay: idx * 0.12,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
+              className="group cursor-pointer rounded-3xl border border-slate-200 bg-slate-50 p-10 shadow-sm transition-all hover:shadow-2xl hover:bg-white"
             >
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 transition-colors group-hover:bg-slate-900"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 transition-colors group-hover:bg-slate-900 mb-6"
               >
-                <reason.icon className="h-6 w-6 text-slate-600 transition-colors group-hover:text-white" />
+                <reason.icon className="h-8 w-8 text-slate-600 transition-colors group-hover:text-white" />
               </motion.div>
-              <h3 className="text-lg font-semibold text-slate-900">{reason.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{reason.description}</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">{reason.title}</h3>
+              <p className="text-slate-600 leading-relaxed">{reason.description}</p>
             </motion.div>
           ))}
         </div>

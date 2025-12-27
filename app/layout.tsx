@@ -4,7 +4,6 @@ import { ToastProvider } from "@/components/Toast";
 import { StructuredData } from "@/components/StructuredData";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CookieConsent } from "@/components/CookieConsent";
-import { ChatWidget } from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "TechBridge – Digitalisierung, Produktentwicklung & KI-Automatisierung",
@@ -62,7 +61,6 @@ export default function RootLayout({
       <body className="bg-white text-slate-900 antialiased font-sans">
         <ToastProvider>
           {children}
-          <ChatWidget />
           <ScrollToTop />
           <CookieConsent />
         </ToastProvider>
