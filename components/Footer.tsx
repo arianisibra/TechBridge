@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 
@@ -34,6 +36,7 @@ const columns = [
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const [logoError, setLogoError] = useState(false);
   
   return (
     <footer className="relative overflow-hidden border-t border-slate-200 bg-white py-20 sm:py-24">
@@ -41,14 +44,32 @@ export function Footer() {
         <div className="grid gap-16 md:grid-cols-5">
           {/* Brand */}
           <div className="space-y-6 md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 text-lg font-semibold text-slate-900">
-              <motion.span
-                whileHover={{ scale: 1.1, rotate: 10 }}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white text-sm font-bold"
-              >
-                TB
-              </motion.span>
-              TechBridge
+            <Link href="/" className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+              {logoError ? (
+                <>
+                  <motion.span
+                    whileHover={{ scale: 1.1, rotate: 10 }}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white text-sm font-bold"
+                  >
+                    TB
+                  </motion.span>
+                  <span>TechBridge</span>
+                </>
+              ) : (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="relative h-10 w-auto"
+                >
+                  <Image
+                    src="/logo.svg"
+                    alt="TechBridge Logo"
+                    width={120}
+                    height={40}
+                    className="h-10 w-auto object-contain"
+                    onError={() => setLogoError(true)}
+                  />
+                </motion.div>
+              )}
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-slate-600">
               Digitalisierung, KI-Automatisierung & Wachstum für Schweizer Unternehmen.

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -15,6 +16,7 @@ const navLinks = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   return (
     <motion.header
@@ -24,16 +26,35 @@ export function Navbar() {
       className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur-lg"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 text-lg font-semibold group">
-          <motion.span
-            whileHover={{ scale: 1.1, rotate: 10 }}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white shadow-lg text-sm font-bold"
-          >
-            TB
-          </motion.span>
-          <span className="transition-colors group-hover:text-slate-700">
-            TechBridge
-          </span>
+        <Link href="/" className="flex items-center gap-3 text-lg font-semibold group">
+          {logoError ? (
+            <>
+              <motion.span
+                whileHover={{ scale: 1.1, rotate: 10 }}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white shadow-lg text-sm font-bold"
+              >
+                TB
+              </motion.span>
+              <span className="transition-colors group-hover:text-slate-700">
+                TechBridge
+              </span>
+            </>
+          ) : (
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="relative h-10 w-auto"
+            >
+              <Image
+                src="/logo.svg"
+                alt="TechBridge Logo"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain"
+                onError={() => setLogoError(true)}
+                priority
+              />
+            </motion.div>
+          )}
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 lg:flex">

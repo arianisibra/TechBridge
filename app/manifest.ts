@@ -1,24 +1,21 @@
 import { MetadataRoute } from "next";
 
+import { MetadataRoute } from "next";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Lumafin Business – AI Invoice Automation",
-    short_name: "Lumafin",
-    description: "AI-powered invoice automation for modern finance teams",
+    name: "TechBridge – Digitalisierung, Produktentwicklung & KI-Automatisierung",
+    short_name: "TechBridge",
+    description: "Digitalisierung, Produktentwicklung & KI-Automatisierung für Schweizer Unternehmen",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#0f172a",
+    theme_color: "#094D81",
     icons: [
       {
-        src: "/icon-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        src: "/icon-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
+        src: "/logo.svg",
+        sizes: "any",
+        type: "image/svg+xml",
       },
     ],
   };
