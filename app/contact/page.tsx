@@ -59,6 +59,7 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (!response.ok) {
+        console.error("API Error:", data);
         throw new Error(data.error || "Fehler beim Senden der Nachricht");
       }
 
@@ -74,9 +75,10 @@ export default function ContactPage() {
       });
 
       setSubmitted(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting form:", error);
-      alert("Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter info@tech-bridge.ch");
+      const errorMessage = error?.message || "Fehler beim Senden der Nachricht";
+      alert(`${errorMessage}\n\nBitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter info@tech-bridge.ch`);
     } finally {
       setSubmitting(false);
     }
