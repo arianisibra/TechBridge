@@ -16,12 +16,15 @@ export async function POST(request: NextRequest) {
 
     // Check if Resend is configured
     if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not configured");
+      console.error("❌ RESEND_API_KEY is not configured in environment variables");
       return NextResponse.json(
         { error: "E-Mail-Service ist nicht konfiguriert. Bitte kontaktieren Sie uns direkt unter info@tech-bridge.ch" },
         { status: 500 }
       );
     }
+
+    // Log API key status (without exposing the key)
+    console.log("✅ RESEND_API_KEY is configured:", process.env.RESEND_API_KEY ? "Yes (length: " + process.env.RESEND_API_KEY.length + ")" : "No");
 
     // Format email content
     const serviceLabels: Record<string, string> = {
@@ -70,9 +73,13 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
     // Initialize Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "TechBridge <onboarding@resend.dev>";
+    console.log("📧 Attempting to send email from:", fromEmail);
+    console.log("📧 To: info@tech-bridge.ch");
+
     // Send email
     const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "TechBridge <onboarding@resend.dev>",
+      from: fromEmail,
       to: ["info@tech-bridge.ch"],
       replyTo: email,
       subject: emailSubject,
@@ -99,7 +106,7 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
 
           <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #334155; margin-top: 0;">Nachricht</h3>
-            <p style="white-space: pre-wrap;">${message}</p>
+            <p style="white-space: pre-wrap;">${message.replace(/\n/g, "<br>")}</p>
           </div>
 
           <p style="color: #64748b; font-size: 12px; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
@@ -110,21 +117,34 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("❌ Resend error:", JSON.stringify(error, null, 2));
+      console.error("❌ Error details:", {
+        message: error.message,
+        name: error.name,
+        statusCode: (error as any).statusCode
+      });
       return NextResponse.json(
-        { error: "Fehler beim Senden der E-Mail. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter info@tech-bridge.ch" },
+        { 
+          error: "Fehler beim Senden der E-Mail. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter info@tech-bridge.ch",
+          details: process.env.NODE_ENV === "development" ? error.message : undefined
+        },
         { status: 500 }
       );
     }
 
+    console.log("✅ Email sent successfully! Message ID:", data?.id);
     return NextResponse.json({ 
       success: true, 
       messageId: data?.id 
     });
-  } catch (error) {
-    console.error("Contact form error:", error);
+  } catch (error: any) {
+    console.error("❌ Contact form error:", error);
+    console.error("❌ Error stack:", error.stack);
     return NextResponse.json(
-      { error: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter info@tech-bridge.ch" },
+      { 
+        error: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter info@tech-bridge.ch",
+        details: process.env.NODE_ENV === "development" ? error.message : undefined
+      },
       { status: 500 }
     );
   }
