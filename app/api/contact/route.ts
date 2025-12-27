@@ -73,9 +73,11 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
     // Initialize Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "TechBridge <onboarding@resend.dev>";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "TechBridge <noreply@tech-bridge.ch>";
+    const recipientEmail = process.env.RESEND_RECIPIENT_EMAIL || "info@tech-bridge.ch";
+    
     console.log("📧 Attempting to send email from:", fromEmail);
-    console.log("📧 To: info@tech-bridge.ch");
+    console.log("📧 To:", recipientEmail);
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -90,7 +92,7 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
     // Send email
     const { data, error } = await resend.emails.send({
       from: fromEmail,
-      to: ["info@tech-bridge.ch"],
+      to: [recipientEmail], // Temporär an verifizierte Adresse, nach Domain-Verifizierung: "info@tech-bridge.ch"
       replyTo: email,
       subject: emailSubject,
       text: emailBody,
