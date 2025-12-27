@@ -77,6 +77,16 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
     console.log("📧 Attempting to send email from:", fromEmail);
     console.log("📧 To: info@tech-bridge.ch");
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.error("❌ Invalid email format:", email);
+      return NextResponse.json(
+        { error: "Ungültige E-Mail-Adresse." },
+        { status: 400 }
+      );
+    }
+
     // Send email
     const { data, error } = await resend.emails.send({
       from: fromEmail,
@@ -106,7 +116,7 @@ Diese Nachricht wurde über das Kontaktformular auf techbridge.ch gesendet.
 
           <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #334155; margin-top: 0;">Nachricht</h3>
-            <p style="white-space: pre-wrap;">${message.replace(/\n/g, "<br>")}</p>
+            <p style="white-space: pre-wrap;">${message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>")}</p>
           </div>
 
           <p style="color: #64748b; font-size: 12px; margin-top: 30px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
