@@ -7,19 +7,25 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
-    if (!consent) {
-      setTimeout(() => setVisible(true), 2000);
+    if (typeof window !== "undefined") {
+      const consent = localStorage.getItem("cookie-consent");
+      if (!consent) {
+        setTimeout(() => setVisible(true), 2000);
+      }
     }
   }, []);
 
   const accept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cookie-consent", "accepted");
+    }
     setVisible(false);
   };
 
   const decline = () => {
-    localStorage.setItem("cookie-consent", "declined");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cookie-consent", "declined");
+    }
     setVisible(false);
   };
 

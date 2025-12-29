@@ -10,6 +10,7 @@ import { Menu, X, ChevronRight } from "lucide-react";
 const navLinks = [
   { label: "Leistungen", href: "/services" },
   { label: "Projekte", href: "/work" },
+  { label: "Referenzen", href: "/referenzen" },
   { label: "Über uns", href: "/about" },
   { label: "Kontakt", href: "/contact" }
 ];
@@ -42,14 +43,14 @@ export function Navbar() {
           ) : (
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="relative h-10 w-auto"
+              className="relative h-14 w-auto"
             >
               <Image
                 src="/logo.png"
                 alt="TechBridge Logo"
-                width={120}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={160}
+                height={56}
+                className="h-14 w-auto object-contain"
                 onError={() => setLogoError(true)}
                 priority
               />
@@ -91,6 +92,15 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
+            <Button href="/offerte" variant="secondary">Offerte</Button>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.45 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Button href="/contact">Gespräch buchen</Button>
           </motion.div>
           
@@ -124,9 +134,16 @@ export function Navbar() {
             </Link>
           ))}
           <Link
+            href="/offerte"
+            onClick={() => setMobileOpen(false)}
+            className="mt-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-center text-sm font-medium text-slate-900 hover:border-slate-300"
+          >
+            Offerte
+          </Link>
+          <Link
             href="/contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-2 rounded-lg bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white"
+            className="rounded-lg bg-slate-900 px-4 py-3 text-center text-sm font-medium text-white"
           >
             Gespräch buchen
           </Link>

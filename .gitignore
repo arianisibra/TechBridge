@@ -1,5 +1,6 @@
 # Dependencies
 node_modules
+node_modules 2
 
 # Next.js
 .next
@@ -19,6 +20,11 @@ lerna-debug.log*
 
 # Local
 *.local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Editor directories and files
 .vscode/*
@@ -30,4 +36,15 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
-.env
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+.cache

@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Check
 } from "lucide-react";
+import { ArchitectureLines } from "@/components/ArchitectureLines";
 
 const serviceLines = [
   {
@@ -102,13 +103,23 @@ export function Services() {
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               className="group relative rounded-3xl border border-slate-200 bg-white p-10 sm:p-12 shadow-sm transition-all hover:shadow-2xl hover:border-slate-300"
             >
-              {/* Icon with enhanced animation */}
+              {/* Architecture lines */}
+              <ArchitectureLines />
+              
+              {/* Icon with oval background (like in the image) */}
               <motion.div
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="flex h-18 w-18 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-50 transition-colors group-hover:from-slate-900 group-hover:to-slate-800 mb-8"
+                className="relative mb-8"
               >
-                <service.icon className="h-9 w-9 text-slate-600 transition-colors group-hover:text-white" />
+                <div className="relative w-20 h-12 bg-slate-100 rounded-full flex items-center justify-center">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="flex items-center justify-center"
+                  >
+                    <service.icon className="h-6 w-6 text-slate-700" />
+                  </motion.div>
+                </div>
               </motion.div>
               
               <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>

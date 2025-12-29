@@ -21,6 +21,8 @@ const columns = [
     links: [
       { label: "Über uns", href: "/about" },
       { label: "Projekte", href: "/work" },
+      { label: "Referenzen", href: "/referenzen" },
+      { label: "Offerte", href: "/offerte" },
       { label: "Kontakt", href: "/contact" }
     ]
   },
@@ -58,14 +60,14 @@ export function Footer() {
               ) : (
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative h-10 w-auto"
+                  className="relative h-14 w-auto"
                 >
                   <Image
                     src="/logo.png"
                     alt="TechBridge Logo"
-                    width={120}
-                    height={40}
-                    className="h-10 w-auto object-contain"
+                    width={160}
+                    height={56}
+                    className="h-14 w-auto object-contain"
                     onError={() => setLogoError(true)}
                   />
                 </motion.div>

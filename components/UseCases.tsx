@@ -11,8 +11,10 @@ import {
   Smartphone, 
   ShoppingCart,
   ArrowRight,
-  Lightbulb
+  Lightbulb,
+  Check
 } from "lucide-react";
+import { ArchitectureLines } from "@/components/ArchitectureLines";
 
 const useCases = [
   {
@@ -106,14 +108,25 @@ export function UseCases() {
                 ease: [0.22, 1, 0.36, 1]
               }}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group cursor-pointer rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-2xl hover:border-slate-300"
+              className="group cursor-pointer relative rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-2xl hover:border-slate-300"
             >
+              {/* Architecture lines */}
+              <ArchitectureLines />
+              
+              {/* Icon with oval background */}
               <motion.div
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-50 transition-colors group-hover:from-slate-900 group-hover:to-slate-800 mb-6"
+                className="relative mb-6"
               >
-                <useCase.icon className="h-8 w-8 text-slate-600 transition-colors group-hover:text-white" />
+                <div className="relative w-16 h-10 bg-slate-100 rounded-full flex items-center justify-center">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="flex items-center justify-center"
+                  >
+                    <useCase.icon className="h-5 w-5 text-slate-700" />
+                  </motion.div>
+                </div>
               </motion.div>
               
               <h3 className="text-xl font-bold text-slate-900 mb-3">{useCase.title}</h3>
