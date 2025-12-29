@@ -45,7 +45,7 @@ export function Navbar() {
               className="relative h-10 w-auto"
             >
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="TechBridge Logo"
                 width={120}
                 height={40}
